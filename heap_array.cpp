@@ -51,6 +51,8 @@ MaxHeap::MaxHeap(int cap){
 	heap = new int[cap];
 }
 
+// creates a max-heap for the given array
+
 /*void MaxHeap::BuildMaxHeap(){
 	int i;
 	for(i=heap_size/2-1;i>=0;i--){

@@ -85,7 +85,7 @@ class MaxHeap{
 		void deleteKey(treePtr ptr);
 		void insertKey(int k);
 		int* heapSort();
-		void BuildMaxHeap();
+		void BuildMaxHeap();	// creates a max-heap for given tree
 		void print(treePtr ptr);
 };
 
