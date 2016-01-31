@@ -39,7 +39,7 @@ class MaxHeap{
 		
 		void heapSort();
 		
-		//void BuildMaxHeap();
+		void BuildMaxHeap();
 				
 		void print();
 };
@@ -53,13 +53,13 @@ MaxHeap::MaxHeap(int cap){
 
 // creates a max-heap for the given array
 
-/*void MaxHeap::BuildMaxHeap(){
+void MaxHeap::BuildMaxHeap(){
 	int i;
 	for(i=heap_size/2-1;i>=0;i--){
 		MaxHeapify(i);
 	}
 
-}*/
+}
 
 /*assumption: left and right satisfy property
  and ith element is made to satisfy property*/ 
@@ -94,7 +94,7 @@ int MaxHeap::extractMax(){
         return heap[0];
     }
 
-	swap(&heap[0],&heap[heap_size]);
+	swap(&heap[0],&heap[heap_size-1]);
 	heap_size--;
 	MaxHeapify(0);
 	return heap[heap_size];	
@@ -115,7 +115,7 @@ void MaxHeap::increaseKey(int i,int new_value){
 /*delete an element*/
 void MaxHeap::deleteKey(int i){
 	
-	if(i>heap_size || i<0){
+	if(i>=heap_size || i<0){
 		cout<<"ERROR!"<<endl;
 		return ;
 	}
@@ -160,7 +160,7 @@ void MaxHeap::print(){
 		cout<<"Nothing to print"<<endl;
 	else{
 	for(i=0;i<heap_size;i++){
-		cout<<heap[i]<<",";
+		cout<<heap[i]<<" ";
 	}
 	cout<<endl;
 	}
@@ -174,8 +174,27 @@ int main(){
 	maxHeap.insertKey(56);
 	maxHeap.insertKey(16);
 	maxHeap.insertKey(79);
+	cout<<"Sorting the heap: ";
 	maxHeap.heapSort();
-	
 	maxHeap.print();
+	maxHeap.BuildMaxHeap();
+	cout<<"Maximum element deleted: "<<maxHeap.extractMax()<<endl;
+	cout<<"Sorting the heap: ";
+	maxHeap.heapSort();
+	maxHeap.print();
+	maxHeap.BuildMaxHeap();
+	maxHeap.insertKey(50);
+	cout<<"inserted element: 50"<<endl;
+	cout<<"Sorting: ";
+	maxHeap.heapSort();
+	maxHeap.print();
+	maxHeap.BuildMaxHeap();
+	maxHeap.print();
+	cout<<"Deleted index 2 after Building heap"<<endl;
+	maxHeap.deleteKey(2);
+	cout<<"Sorting the heap: ";
+	maxHeap.heapSort();
+	maxHeap.print();
+	maxHeap.BuildMaxHeap();
 	return 0;
 }

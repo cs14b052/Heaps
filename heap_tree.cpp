@@ -85,7 +85,7 @@ class MaxHeap{
 		void deleteKey(treePtr ptr);
 		void insertKey(int k);
 		int* heapSort();
-		void BuildMaxHeap();	// creates a max-heap for given tree
+		void BuildMaxHeap();	// creates a max-heap for given array
 		void print(treePtr ptr);
 };
 
@@ -213,8 +213,8 @@ void MaxHeap::deleteKey(treePtr ptr){
 void MaxHeap::print(treePtr ptr){
 
 	if(ptr!=NULL){
+		cout<<ptr->data<<" ";
 		print(ptr->leftPtr);
-		cout<<ptr->data<<",";
 		print(ptr->rightPtr);
 	}
 
@@ -235,6 +235,7 @@ int* MaxHeap::heapSort(){
 			i++;
 		}
 		/*heap does not exist after this*/
+		delete(root);
 		return sorted;
 	}
 
@@ -249,13 +250,27 @@ int main(){
 	maxHeap.insertKey(79);
 	maxHeap.insertKey(132);
 	maxHeap.insertKey(569);
+	cout<<"PreOrder traversal of tree: ";
+	maxHeap.print(maxHeap.getRootPtr());
+	cout<<endl;
+	cout<<"Maximum element deleted: "<<maxHeap.extractMax()<<endl;
+	cout<<"PreOrder traversal of tree: ";
+	maxHeap.print(maxHeap.getRootPtr());
+	cout<<endl;
+	maxHeap.insertKey(80);
+	cout<<"inserted element: 80"<<endl;
+	cout<<"PreOrder traversal of tree after inserting 80: ";
+	maxHeap.print(maxHeap.getRootPtr());
+	cout<<endl;
 	int* temp;
 	temp = maxHeap.heapSort();
 	int i=0;
+	cout<<"Sorted heap: ";
 	while((temp+i)!=NULL && i<7){
-		cout<<*(temp+i)<<endl;
+		cout<<*(temp+i)<<" ";
 		i++;
 	}
+	cout<<endl;
 	maxHeap.print(maxHeap.getRootPtr());
 	return 0;
 }
