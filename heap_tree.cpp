@@ -101,7 +101,7 @@ MaxHeap::MaxHeap(){
 
 
 void MaxHeap::BuildMaxHeap(int *a){
-
+	/* accessing every element once,so it should be O(n)*/
 	root = new tree;
 	root->data = a[0];
 	heap_size++;
@@ -125,6 +125,7 @@ void MaxHeap::BuildMaxHeap(int *a){
 			temp->rightPtr = Right;
 		}
 	}
+	/* T(n) = 2T(n/2) + O(logn)*/
 	build_heap_property(root);
 }
 void MaxHeap::BuildMaxHeap(vector<int> a){
