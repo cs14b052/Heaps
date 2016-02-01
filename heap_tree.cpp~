@@ -141,14 +141,12 @@ void MaxHeap::BuildMaxHeap(vector<int> a){
 		Queue.pop();
 		treePtr Left = new tree;
 		Left->data = *i;
-		Left->parent = temp;
 		Queue.push(Left);
 		temp->leftPtr = Left;
 		heap_size++;i++;
 		if(i<a.end()){
 			treePtr Right = new tree;
 			Right->data = *i;
-			Right->parent = temp;
 			Queue.push(Right);			
 			heap_size++;i++;
 			temp->rightPtr = Right;
