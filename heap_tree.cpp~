@@ -267,13 +267,12 @@ void MaxHeap::increaseKey(treePtr ptr,int new_value){
 
 	if(new_value<=ptr->data)
 		cout<<"ERROR!"<<endl;
-	else{
+	/*else{
+		string s = ptr->dir;
+		int i = s.length()-1;
 		ptr->data = new_value;
-		while(ptr->parent!=root || ptr->parent->data<ptr->data){
-			swap(ptr,ptr->parent);
-			ptr=ptr->parent;
-		}
-	}
+		order_max(root,s,0);
+	}*/
 }
 
 /*delete an element*/
